@@ -1,3 +1,11 @@
+# FPGA Project
+fpga
+
+# my documents
+*.pdf
+*.docx
+*.zip
+
 # Simualtion Folder
 work
 
@@ -7,3 +15,4 @@ work
 *.qtl
 _info
 _vmake
+*.bak
