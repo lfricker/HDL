@@ -1,9 +1,8 @@
 //---------------------------------
 // Projet : HDL_2020
 // Name   : counter_pwm
-// Purpose: PWM Counter module
 // Author : lfr
-// Version: v00, 03.12.2020 -- initial
+// Date   : 29.12.2020
 //---------------------------------
 
 
@@ -20,6 +19,12 @@ output logic [W-1:0] cnt,
 output logic         pwm
 );
 
+logic cntzero;
+logic cntcmp;
+
+assign cntzero = (cnt == 'b0);
+assign cntmax  = (cnt == per);
+
 assign pwm = (cnt < cmp) ? 1'b1 : 1'b0;
 
 // counter
@@ -31,7 +36,7 @@ begin
    end
    else if(!down)
    begin
-      if(cnt == per)
+      if(cntmax)
       begin
          cnt <= 0;
       end
@@ -42,7 +47,7 @@ begin
    end
    else
    begin
-      if(cnt == 'b0)
+      if(cntzero)
       begin
          cnt <= per;
       end

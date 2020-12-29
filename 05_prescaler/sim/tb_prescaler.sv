@@ -1,4 +1,9 @@
-/* Header */
+//---------------------------------
+// Projet : HDL_2020
+// Name   : tb_prescaler
+// Author : lfr
+// Date   : 29.12.2020
+//---------------------------------
 
 
 module tb_prescaler ();

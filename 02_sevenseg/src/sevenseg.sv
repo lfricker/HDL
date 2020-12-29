@@ -1,9 +1,8 @@
 //---------------------------------
-// Projet : HDL_2018
+// Projet : HDL_2020
 // Name   : sevenseg
-// Purpose: Controll a sevensegment display
 // Author : lfr
-// Version: v00, 08.10.2018 -- binitial
+// Date   : 29.12.2020
 //---------------------------------
 
 

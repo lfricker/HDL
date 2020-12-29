@@ -1,4 +1,9 @@
-/* header */
+//---------------------------------
+// Projet : HDL_2020
+// Name   : prescaler
+// Author : lfr
+// Date   : 29.12.2020
+//---------------------------------
 
 
 module prescaler

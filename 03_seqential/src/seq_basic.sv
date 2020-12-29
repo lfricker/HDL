@@ -1,6 +1,9 @@
-
-
-
+//---------------------------------
+// Projet : HDL_2020
+// Name   : seq_basic
+// Author : lfr
+// Date   : 29.12.2020
+//---------------------------------
 
 module seq_basic(
    input logic             rst_n,      // acitve low reset

@@ -1,9 +1,9 @@
-//--------------------------------------
-// Project: Sequential logic
-// Purpose: Testbench for toggle FF with enable input
-// Author : Luka
-// Version: v0, 1.10.2018
-//-------------------------------------- 
+//---------------------------------
+// Projet : HDL_2020
+// Name   : tb_seq_basic
+// Author : lfr
+// Date   : 29.12.2020
+//---------------------------------
 
 module tb_seq_basic();
 logic             rst_n;

@@ -43,6 +43,7 @@ module debounce (
          begin
             sw_lo_cnt <= '0;
             sw_lo <= 'b1;
+            sw_dbnc <= 'b0;
          end
          else if(sw_lo_cnt_zero)
          begin
@@ -61,6 +62,7 @@ module debounce (
          begin
             sw_hi_cnt <= '0;
             sw_hi <= 'b1;
+            sw_dbnc <= 'b1;
          end
          else if(sw_hi_cnt_zero)
          begin

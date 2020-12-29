@@ -1,3 +1,10 @@
+//---------------------------------
+// Projet : HDL_2020
+// Name   : tb_counter_pwm
+// Author : lfr
+// Date   : 29.12.2020
+//---------------------------------
+
 module tb_counter_pwm();
 
 // (1) Create wires
