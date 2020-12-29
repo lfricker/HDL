@@ -21,7 +21,16 @@ logic          pwm;
 counter_pwm #(.W(5)) dut (.*);
 
 // (3) Test
+
+task wait_clks(input int clks);
+   repeat(clks)
+   begin
+      @(negedge clk50m);
+   end
+endtask
+
 logic run = 1;
+string action = "POR";
 
 initial
 begin
@@ -39,18 +48,39 @@ begin
    en = 0;
    down = 0;
    cmp = 18;
-   per = 31;
+   per = '1;
 
    $display("cmp:\t%d", cmp);
    $display("per:\t%d", per);
    $display("down:\t%d", down);
    $display("en:\t%d", en);
 
-   #50ns;
+   wait_clks(10);
+   $display("counting up 50 times");
+   action = "UP";
    rst_n = 1;
-   #10us;
+   wait_clks(50);
+   $$display("counting down 100 times");
+   action = "DOWN";
    down = 1;
-   #10us;
+   wait_clks(100);
+   $display("set cmp all zeros for 100 clks / cnt up");
+   action = "UP ALL ZERO";
+   down = 0;
+   cmp = '0;
+   wait_clks(100);
+   $display("set cmp all ones for 100 clks / cnt down");
+   action = "DOWN ALL ONES";
+   down = 1;
+   cmp = '1;
+   wait_clks(100);
+   $$display("set cmp 5'b10000 for 100 clks cnt up");
+   action = "UP 5'b10000";
+   down = 0;
+   cmp = 5'b10000;
+   wait_clks(100);
+
+   $display("tb_counter_pwm complete!");
    run = 0;
 end
 
