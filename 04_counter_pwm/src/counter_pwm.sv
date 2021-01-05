@@ -23,7 +23,7 @@ logic cntzero;
 logic cntcmp;
 
 assign cntzero = (cnt == 'b0);
-assign cntmax  = (cnt == per-1);
+assign cntmax  = (cnt >= per-1);
 
 assign pwm = (cnt < cmp) ? 1'b1 : 1'b0;
 

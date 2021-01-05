@@ -1,13 +1,3 @@
-# -------------------------
-# This file shall control the whole simulation
-# - setup environment
-# - compile sources
-# - compile test benches
-# - init simulation
-# - run the simulation
-# - show the output
-# -------------------------
-
 # (1) Setup sim environment
 vlib work
 vmap work work

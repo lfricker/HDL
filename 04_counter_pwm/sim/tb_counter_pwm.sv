@@ -74,11 +74,18 @@ begin
    down = 1;
    cmp = '1;
    wait_clks(100);
-   $$display("set cmp 5'b10000 for 100 clks cnt up");
+   $display("set cmp 5'b10000 for 100 clks cnt up");
    action = "UP 5'b10000";
    down = 0;
    cmp = 5'b10000;
    wait_clks(100);
+   $display("set cmp 8 for 35 clks cnt up");
+   action = "CMP 8";
+   cmp = 8;
+   wait_clks(35);
+   action = "PER 15";
+   per = 15;
+   wait_clks(30);
 
    $display("tb_counter_pwm complete!");
    run = 0;
