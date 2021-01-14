@@ -34,26 +34,29 @@ begin
    begin
       cnt <= 'b0;
    end
-   else if(!down)
+   else if(en)
    begin
-      if(cntmax)
+      if(!down)
       begin
-         cnt <= 0;
+         if(cntmax)
+         begin
+            cnt <= 0;
+         end
+         else
+         begin
+            cnt <= cnt + 'b1;
+         end
       end
       else
       begin
-         cnt <= cnt + 'b1;
-      end
-   end
-   else
-   begin
-      if(cntzero)
-      begin
-         cnt <= per -1;
-      end
-      else
-      begin
-         cnt <= cnt - 'b1;
+         if(cntzero)
+         begin
+            cnt <= per -1;
+         end
+         else
+         begin
+            cnt <= cnt - 'b1;
+         end
       end
    end
 end

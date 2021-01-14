@@ -12,7 +12,7 @@ module prescaler
 )
 (
    input logic rst_n,
-   input logic clk50m,
+   input logic clk,
 
    output logic en
 );
@@ -25,7 +25,7 @@ logic cntzero;
 
 assign cntzero = cnt == '0;
 
-always_ff @ (negedge rst_n or posedge clk50m)
+always_ff @ (negedge rst_n or posedge clk)
 begin
    if(~rst_n)
    begin
