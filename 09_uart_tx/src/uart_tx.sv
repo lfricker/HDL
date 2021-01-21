@@ -67,7 +67,9 @@ end
 
 //state machine
 
-enum logic [1:0] {IDLE, START, DATA, STOP} state, state_next;
+typedef enum {IDLE, START, DATA, STOP} uart_states;
+uart_states state;
+uart_states state_next;
 
 always_ff @ (negedge rst_n or posedge clk)
 begin
