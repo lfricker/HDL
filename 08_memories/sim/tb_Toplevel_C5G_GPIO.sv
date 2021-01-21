@@ -56,16 +56,19 @@ module tb_Toplevel_C5G_GPIO ();
       $display("tb_Toplevel_C5G_GPIO started");
       $display("-------------------");
       rst_n = 1'b0;
-
       KEY = 'b0;
       SW = 'b0;
+
+      $readmemh("../ip/running_light_3.txt", tb_Toplevel_C5G_GPIO.dut.u0_memory_quartus.altsyncram_component.m_default.altsyncram_inst.mem_data);
 
       #100ns;
 
       rst_n = 1'b1;
       #100ns;
 
-      wait_clks(2000);
+
+      #100us;
+//      wait_clks(2000);
 
       run_sim = 1'b0;
       $display("--------------------");
