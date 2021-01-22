@@ -1,0 +1,2 @@
+
+`define BITS 3

@@ -20,7 +20,7 @@ output logic         pwm
 );
 
 logic cntzero;
-logic cntcmp;
+logic cntmax;
 
 assign cntzero = (cnt == 'b0);
 assign cntmax  = (cnt >= per-1);
