@@ -51,7 +51,7 @@ begin
       begin
          if(cntzero)
          begin
-            cnt <= per -1;
+            cnt <= per - 1;
          end
          else
          begin

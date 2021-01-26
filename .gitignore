@@ -1,5 +1,27 @@
 # FPGA Project
-fpga
+db
+incremental_db
+greybox_tmp
+
+*.asm.rpt
+*.done
+*.fit.rpt
+*.fit.smsg
+*.fit.summary
+*.flow.rpt
+*.htm
+*.jdi
+*.map.rpt
+*.map.smsg
+*.map.summary
+*.pin
+*.qpf
+*.qsf
+*.sdc
+*.sld
+*.sof
+*.sta.rpt
+*.sta.summary
 
 # my documents
 *.pdf

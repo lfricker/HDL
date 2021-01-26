@@ -90,7 +90,7 @@ module tb_Toplevel_C5G_GPIO ();
       rst_n = 1'b1;
       #100ns;
 
-      press_button_faster(20);
+      press_button_slower(20);
 
       #100us;
       repeat(5000)
@@ -98,7 +98,7 @@ module tb_Toplevel_C5G_GPIO ();
          @(posedge dut.inc_data);
       end
 
-      press_button_slower(10);
+      press_button_faster(10);
       repeat(5000)
       begin
          @(posedge dut.inc_data);

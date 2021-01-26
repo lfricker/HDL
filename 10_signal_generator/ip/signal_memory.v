@@ -84,7 +84,7 @@ module signal_memory (
       altsyncram_component.address_aclr_a = "NONE",
       altsyncram_component.clock_enable_input_a = "BYPASS",
       altsyncram_component.clock_enable_output_a = "BYPASS",
-      altsyncram_component.init_file = "../../Studium/Embedded3/HDL_INF3/10_signal_generator/ip/sine.mif",
+      altsyncram_component.init_file = "sine.mif",
       altsyncram_component.intended_device_family = "Cyclone V",
       altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=mem1",
       altsyncram_component.lpm_type = "altsyncram",
