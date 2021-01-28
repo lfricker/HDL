@@ -16,7 +16,7 @@ add wave -noupdate /tb_uart_rx/dut/sample_rx
 add wave -noupdate /tb_uart_rx/dut/state
 add wave -noupdate /tb_uart_rx/dut/state_next
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {0 ps} 0}
+WaveRestoreCursors {{Cursor 1} {219493841 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 220
 configure wave -valuecolwidth 100
@@ -32,4 +32,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {4623580500 ps}
+WaveRestoreZoom {209466448 ps} {234938576 ps}
