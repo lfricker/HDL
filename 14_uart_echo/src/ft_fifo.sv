@@ -58,12 +58,12 @@ module ft_fifo
       begin
          empty <= '0;
          data[d_cnt] <= d_in;
-         d_cnt <= d_cnt + 1;
+         d_cnt <= d_cnt + 'd1;
       end
       else if(r_en && ~d_cnt_zero)
       begin
          empty <= '0;
-         d_cnt <= d_cnt - 1;
+         d_cnt <= d_cnt - 'd1;
          data[DEPTH-1:0] <= {1'b0, data[DEPTH-1:1]};
       end
       else if(d_cnt_zero)

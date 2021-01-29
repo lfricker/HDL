@@ -82,6 +82,20 @@ begin
    end
 end
 
+// register output
+logic update_rx;
+always_ff @(negedge rst_n or posedge clk)
+begin
+	if(~rst_n)
+	begin
+		rx_data <= '0;
+	end
+	else if(update_rx)
+	begin
+		rx_data <= rx_buffer;
+	end
+end
+
 
 // state machine
 typedef enum {IDLE, START, SMPL, DATA, STOP} uart_states;
@@ -110,8 +124,8 @@ begin
    bitCnt_clear   = 1'b0;
    widthCnt_load  = 1'b0;
    sample_rx      = 1'b0;
+	update_rx      = 1'b0;
 
-   rx_data        = rx_data;
    idle           = 1'b0;
    valid          = 1'b0;
 
@@ -170,7 +184,7 @@ begin
          if(widthCnt_sample && rx)
          begin
             state_next = IDLE;
-            rx_data = rx_buffer;
+            update_rx = 'b1;
             valid = 1'b1;
          end
          else if(widthCnt_sample)

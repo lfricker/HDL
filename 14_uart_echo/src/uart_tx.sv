@@ -83,7 +83,44 @@ begin
    end
 end
 
+// tx data buffer
 logic [7:0] tx_buffer;
+logic register_tx;
+always_ff @ (negedge rst_n or posedge clk)
+begin
+	if(~rst_n)
+	begin
+		tx_buffer <= '0;
+	end
+	else if(register_tx)
+	begin
+		tx_buffer <= tx_data;
+	end
+end
+
+// tx_out_register
+logic start_condition;
+logic data_condition;
+logic stop_condition;
+always_ff @(negedge rst_n or posedge clk)
+begin
+	if(~rst_n)
+	begin
+		tx <= 'b1;
+	end
+	else if(start_condition)
+	begin
+		tx <= 'b0;
+	end
+	else if(data_condition)
+	begin
+		tx <= tx_buffer[bitCnt];
+	end
+	else if(stop_condition)
+	begin
+		tx <= 'b1;
+	end
+end
 
 always_comb
 begin
@@ -92,9 +129,11 @@ begin
    bitCnt_inc     = 'b0;
    widthCnt_load  = 'b0;
 
-   tx_buffer = tx_buffer;
+	start_condition = 'b0;
+	data_condition  = 'b0;
+	stop_condition  = 'b0;
+   register_tx    = 'b0;
    // tx is idle HIGH
-   tx             = 'b1;
    idle           = 'b0;
 
    state_next = state;
@@ -105,7 +144,7 @@ begin
          idle = 1'b1;
          if(tx_start)
          begin
-            tx_buffer = tx_data;
+				register_tx = 'b1;
             widthCnt_load = 'b1;
             state_next = START;
          end
@@ -113,7 +152,7 @@ begin
 
       START:
       begin
-         tx = 0;
+			start_condition = 'b1;
          if(widthCnt_zero)
          begin
             widthCnt_load = 'b1;
@@ -124,8 +163,8 @@ begin
 
       DATA:
       begin
-         tx = tx_buffer[bitCnt];
-         if((bitCnt >= 7) && widthCnt_zero)
+			data_condition = 'b1;
+         if((bitCnt == 7) && widthCnt_zero)
          begin
             state_next = STOP;
             widthCnt_load = 'b1;
@@ -139,6 +178,7 @@ begin
 
       STOP:
       begin
+			stop_condition = 'b1;
          if(widthCnt_zero)
          begin
             state_next = IDLE;
